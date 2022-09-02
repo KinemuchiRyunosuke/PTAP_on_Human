@@ -42,7 +42,7 @@ def main():
     y_pred = np.squeeze(y_pred)
     y_pred = (y_pred >= threshold).astype(int)
 
-    x = vocab.decode(class_token=True)
+    x = vocab.decode(x, class_token=True)
 
     df = pd.DataFrame([x, y_pred], index=['seq', 'prediction']).T
 
