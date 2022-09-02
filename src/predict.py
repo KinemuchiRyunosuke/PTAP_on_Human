@@ -1,7 +1,9 @@
 import numpy as np
 import pandas as pd
+import tensorflow as tf
 
 from dataset import get_dataset
+from models.transformer import BinaryClassificationTransformer
 
 
 fastafile = 'data/raw/protein.faa'
@@ -10,6 +12,14 @@ checkpoint_path = 'models/'
 result_path = 'data/result.csv'
 length = 26
 threshold = 0.5
+
+# parameters of Transformer
+num_words = 26
+head_num = 8            # Transformerの並列化に関するパラメータ
+dropout_rate = 0.04
+hopping_num = 2         # Multi-Head Attentionを施す回数
+hidden_dim = 904        # 単語ベクトルの次元数
+lr = 2.03e-5            # 学習率
 
 
 def main():
@@ -30,13 +40,13 @@ def main():
 def create_model():
     """ モデルを定義する """
     model = BinaryClassificationTransformer(
-                vocab_size=args.num_words,
-                hopping_num=args.hopping_num,
-                head_num=args.head_num,
-                hidden_dim=args.hidden_dim,
-                dropout_rate=args.dropout_rate)
+                vocab_size=num_words,
+                hopping_num=hopping_num,
+                head_num=head_num,
+                hidden_dim=hidden_dim,
+                dropout_rate=dropout_rate)
     model.compile(optimizer=tf.keras.optimizers.Adam(
-                                learning_rate=args.lr),
+                                learning_rate=lr),
                  loss='binary_crossentropy')
 
     return model
