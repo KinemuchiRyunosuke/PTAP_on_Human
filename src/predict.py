@@ -42,9 +42,11 @@ def main():
     y_pred = np.squeeze(y_pred)
     y_pred = (y_pred >= threshold).astype(int)
 
-    df = pd.DataFrame([x, y_pred], columns=['seq', 'prediction'])
+    x = vocab.decode(class_token=True)
 
-    df.to_csv(result_path)
+    df = pd.DataFrame([x, y_pred], index=['seq', 'prediction']).T
+
+    df.to_csv(result_path, index=False)
 
 
 def create_model():
