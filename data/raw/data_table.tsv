@@ -1,0 +1,3 @@
+gene_id	gene_symbol	description	scientific_name	common_name	tax_id	genomic_range	orientation	location	gene_type	transcript_accession	transcript_name	transcript_length	transcript_cds_coords	protein_accession	isoform_name	protein_length	protein_name
+7251	TSG101	tumor susceptibility 101	Homo sapiens	human	9606	NC_000011.10:18480311-18526942;NC_060935.1:18578331-18624993	-;-	chr 11	PROTEIN_CODING	NM_006292.4		1534	NM_006292.4:127-1299	NP_006283.1		390	tumor susceptibility gene 101 protein
+7251	TSG101	tumor susceptibility 101	Homo sapiens	human	9606	NC_000011.10:18480311-18526942;NC_060935.1:18578331-18624993	-;-	chr 11	PROTEIN_CODING	XM_005253108.5	transcript variant X1	1576	XM_005253108.5:325-1341	XP_005253165.1	isoform X1	338	tumor susceptibility gene 101 protein
