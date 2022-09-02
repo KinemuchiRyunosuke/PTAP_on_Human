@@ -17,6 +17,9 @@ def get_dataset(fastafile, vocab_path, length):
     sequences = vocab.encode(sequences)
     sequences = add_class_token(sequences)
 
+    decoded_seq = vocab.decode(sequences)
+    print(decoded_seq)
+
     return sequences
 
 
@@ -144,6 +147,7 @@ def main():
     x = get_dataset(fastafile, vocab_path, length)
 
     print(x)
+
 
 
 if __name__ == '__main__':
