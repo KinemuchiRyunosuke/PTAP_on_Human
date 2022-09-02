@@ -1,8 +1,9 @@
 import numpy as np
 import pandas as pd
+import pickle
 import tensorflow as tf
 
-from dataset import get_dataset
+from dataset import get_record, fragmentate, add_class_token, Vocab
 from models.transformer import BinaryClassificationTransformer
 
 
@@ -23,7 +24,16 @@ lr = 2.03e-5            # 学習率
 
 
 def main():
-    x = get_dataset(fastafile, vocab_path, length)
+    records = get_record(fastafile)
+
+    x = fragmentate(records, length)
+
+    with open(vocab_path, 'rb') as f:
+        tokenizer = pickle.load(f)
+
+    vocab = Vocab(tokenizer)
+    x = vocab.encode(x)
+    x = add_class_token(x)
 
     model = create_model()
     model.load_weights(checkpoint_path)
@@ -51,3 +61,6 @@ def create_model():
 
     return model
 
+
+if __name__ == '__main__':
+    main()

@@ -5,21 +5,6 @@ from Bio import SeqIO
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 
-def get_dataset(fastafile, vocab_path, length):
-    records = get_record(fastafile)
-
-    sequences = fragmentate(records, length)
-
-    with open(vocab_path, 'rb') as f:
-        tokenizer = pickle.load(f)
-
-    vocab = Vocab(tokenizer)
-    sequences = vocab.encode(sequences)
-    sequences = add_class_token(sequences)
-
-    return sequences
-
-
 def get_record(fastafile):
     records = []
 
@@ -134,7 +119,3 @@ class Vocab:
 
     def _texts(self, sequences):
         return ['\t'.join(words) for words in sequences]
-
-
-if __name__ == '__main__':
-    main()
