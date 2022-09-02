@@ -141,7 +141,7 @@ def main():
     vocab_path = 'references/vocab.pickle'
     length = 26
 
-    x = get_dxataset(fastafile, length)
+    x = get_dataset(fastafile, vocab_path, length)
 
     print(x)
 
