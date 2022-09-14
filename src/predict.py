@@ -7,7 +7,7 @@ from dataset import get_record, fragmentate, add_class_token, Vocab
 from models.transformer import BinaryClassificationTransformer
 
 
-fastafile = 'data/raw/protein.faa'
+fastafile = 'data/raw/ck_protein.faa'
 vocab_path = 'data/vocab.pickle'
 checkpoint_path = 'models/'
 result_path = 'data/result.csv'
